@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toward Embodied AGI: A Review of Embodied AI and the Road Ahead - Reading Notes - Research Notes | Siyang Liu | University of Michigan</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Embodied AGI is a form of Embodied AI that demonstrates human-like interaction capabilities and can successfully perform diverse, open-ended real-world tasks at a human-level proficiency." />
+    <meta name="keywords" content="research notes, academic analysis, literature review, academic research, artificial intelligence, robotics" />
+    <meta name="author" content="Siyang Liu" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="language" content="en" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Toward Embodied AGI: A Review of Embodied AI and the Road Ahead - Reading Notes - Research Notes | Siyang Liu" />
+    <meta property="og:description" content="Embodied AGI is a form of Embodied AI that demonstrates human-like interaction capabilities and can successfully perform diverse, open-ended real-world tasks at a human-level proficiency." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://lsy641.github.io/notes/toward-embodied-agi-a-review-of-embodied-ai-and-the-road-ahead---reading-notes" />
+    <meta property="og:image" content="https://lsy641.github.io/images/profile.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Toward Embodied AGI: A Review of Embodied AI and the Road Ahead - Reading Notes Research Notes" />
+    <meta property="og:site_name" content="Siyang Liu - Academic Website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:author" content="Siyang Liu" />
+    <meta property="article:published_time" content="2025-08-27T13:20:31+00:00" />
+    <meta property="article:modified_time" content="2025-08-27T13:20:31+00:00" />
+    <meta property="article:section" content="Research Notes" />
+    <meta property="article:tag" content="['research notes', 'academic analysis', 'literature review']" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Toward Embodied AGI: A Review of Embodied AI and the Road Ahead - Reading Notes" />
+    <meta name="twitter:description" content="Embodied AGI is a form of Embodied AI that demonstrates human-like interaction capabilities and can ..." />
+    <meta name="twitter:image" content="https://lsy641.github.io/images/profile.jpg" />
+    <meta name="twitter:creator" content="@liusiyang_641" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://lsy641.github.io/notes/toward-embodied-agi-a-review-of-embodied-ai-and-the-road-ahead---reading-notes" />
+    
+    <!-- Academic Profile Links -->
+    <link rel="author" href="https://scholar.google.com/citations?user=2OjUAPUAAAAJ" />
+    
+    <!-- Navigation Links -->
+    <link rel="up" href="https://lsy641.github.io/research-notes" />
+    <link rel="home" href="https://lsy641.github.io/" />
+    
+    <!-- Structured Data for Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Toward Embodied AGI: A Review of Embodied AI and the Road Ahead - Reading Notes",
+        "description": "Embodied AGI is a form of Embodied AI that demonstrates human-like interaction capabilities and can successfully perform diverse, open-ended real-world tasks at a human-level proficiency.",
+        "image": "https://lsy641.github.io/images/profile.jpg",
+        "author": {
+            "@type": "Person",
+            "name": "Siyang Liu",
+            "url": "https://lsy641.github.io/",
+            "jobTitle": "Ph.D. Student in Computer Engineering",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "University of Michigan"
+            },
+            "sameAs": [
+                "https://scholar.google.com/citations?user=2OjUAPUAAAAJ"
+            ]
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Siyang Liu's Academic Website",
+            "url": "https://lsy641.github.io/"
+        },
+        "datePublished": "2025-08-27T13:20:31+00:00",
+        "dateModified": "2025-08-27T13:20:31+00:00",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://lsy641.github.io/notes/toward-embodied-agi-a-review-of-embodied-ai-and-the-road-ahead---reading-notes"
+        },
+        "about": [
+            {"@type": "Thing", "name": "Research Notes"}, 
+            {"@type": "Thing", "name": "Academic Analysis"},
+            {"@type": "Thing", "name": "Literature Review"}
+        ],
+        "keywords": "research notes, academic analysis, literature review, academic research, artificial intelligence, robotics",
+        "articleSection": "Research Notes",
+        "inLanguage": "en",
+        "isPartOf": {
+            "@type": "CollectionPage",
+            "name": "Research Notes",
+            "url": "https://lsy641.github.io/research-notes"
+        }
+        , "mentions": [{"@type": "ScholarlyArticle", "name": "Toward Embodied AGI: A Review of Embodied AI and the Road Ahead", "url": "https://arxiv.org/abs/2505.14235"}]
+    }
+    </script>
+    
+    <!-- Additional Structured Data for Breadcrumb -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://lsy641.github.io/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Research Notes",
+                "item": "https://lsy641.github.io/research-notes"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Reading Notes",
+                "item": "https://lsy641.github.io/notes/"
+            }
+        ]
+    }
+    </script>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        h1 { font-size: 2.2em; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { font-size: 1.8em; border-bottom: 1px solid #bdc3c7; padding-bottom: 5px; }
+        h3 { font-size: 1.4em; }
+        h4 { font-size: 1.2em; }
+        p { margin-bottom: 15px; }
+        ul, ol { margin-bottom: 15px; padding-left: 30px; }
+        li { margin-bottom: 5px; }
+        
+        /* Nested list styling */
+        ul ul, ol ul, ul ol, ol ol {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+        
+        /* Make nested lists visually distinct */
+        li > ul, li > ol {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        
+        /* Style for list items with nested content */
+        li:has(ul), li:has(ol) {
+            margin-bottom: 15px;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #3498db;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            padding-left: 20px;
+            color: #555;
+            font-style: italic;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        strong { font-weight: bold; }
+        em { font-style: italic; }
+        hr {
+            border: none;
+            border-top: 1px solid #bdc3c7;
+            margin: 30px 0;
+        }
+        .paper-meta {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        .note-info {
+            background-color: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .breadcrumb {
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 0px;
+            font-size: 0.9em;
+        }
+        .breadcrumb a {
+            color: #666;
+        }
+        .breadcrumb a:hover {
+            color: #3498db;
+        }
+        .navigation {
+            margin: 0 0;
+            padding: 5px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 0px solid #e9ecef;
+        }
+        .navigation a {
+            margin-right: 15px;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        .navigation a:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+        }
+        article {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            margin: 20px 0;
+        }
+        header {
+            margin-bottom: 30px;
+        }
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="https://lsy641.github.io/">Home</a> &gt; 
+        <a href="https://lsy641.github.io/research-notes">Research Notes</a> &gt; 
+        Reading Notes
+    </nav>
+
+    <!-- Navigation Links -->
+    <div class="navigation">
+        <a href="https://lsy641.github.io/">← Back to Home</a>
+        <a href="https://lsy641.github.io/research-notes">← Back to Research Notes</a>
+    </div>
+
+    <article>
+
+        <h2>Toward Embodied AGI: A Review of Embodied AI and the Road Ahead - Reading Notes</h2>
+
+<h2>About the Paper</h2>
+
+<strong>Paper:</strong> <a href="https://arxiv.org/abs/2505.14235" rel="noopener" target="_blank">Toward Embodied AGI: A Review of Embodied AI and the Road Ahead</a> <br>
+
+<strong>Authors:</strong> Yequan Wang, Aixin Sun  <br>
+
+<strong>DOI:</strong> https://doi.org/10.48550/arXiv.2505.14235  <br>
+
+
+<h2>Definition</h2>
+
+<p>Embodied AGI is a form of Embodied AI that demonstrates human-like interaction capabilities and can successfully perform diverse, open-ended real-world tasks at a human-level proficiency.</p>
+<em>(I am not sure if human-level proficiency is necessary in the definition)</em>
+
+<h2>L1-L5 Objectives</h2>
+
+<p>The authors define 5 levels of objectives in the roadmap of embodied AI. For each level, there are detailed requirements from six aspects: modalities, humanoid, real-time, generalization, body&control.
+It seems these requirements are not independent. Capabilities for some requirements are prerequisites for others.
+L1: single-task completion. No generalization ability on new tasks, not mentioning other advanced capabilities (such as humanoid).
+L2: compositional task completion. It refers to the ability of decomposing high-level human instructions into a sequence of simpler actions.</p>
+<em>(It is interesting that the authors define L2 like this. I would like to see more references. Is task decomposition a necessary step from L1 to L3? Doesn't it uniquely exist in L2, so when embodied AI reaches L3, should task decomposition be eliminated?)</em>
+
+<p>L3: conditional general-purpose task completion. Embodied AI has cross-tasks, cross-environment, and human instruction abilities. This step starts to require real-time responsiveness and full modalities.
+L4: highly general-purpose robots. It reaches true general-purpose capability. Accurate and strong decision-making abilities in real-worlds. It starts to require human-like communication and interaction.
+L5: All-purpose robots. These robots have deep understanding of physical laws and human emotional and social dynamics.</p>
+<em>(When illustrating the 5 levels, analogies from LLM and automotive driving cases are used. I think these comparisons are not so intuitive. Each level should present the abilities of robot controlling, sensing, reasoning, and learning with examples.)</em>
+<em>(Timely responsiveness is a too huge leap in AI-based robotics, I would say. It can have multi-levels between L2 to L4. If we use large models to make decisions, real-time responsiveness is a big challenge, as reasoning time takes too long to support tasks requiring instant reaction)</em>
+
+
+<h2>L3 ∼ L5: Key Constituents</h2>
+
+<ol>
+<li>Omnimodal capabilities
+</li>
+</ol>
+
+<ol>
+<li>Humanoid cognitive behaviors
+</li>
+</ol>
+
+<ol>
+<li>Real-time interaction. A widely explored solution is developing small models sacrificing the parameter scale. Real-time auditory and visual interactions are commonly implemented using Time Division Multiplexing. However, these approaches encounter scalability issues when incorporating additional modalities, as computational complexity increases quadratically with sequence length.
+</li>
+</ol>
+<p>A widely explored solution is developing small models sacrificing the parameter scale. Real-time auditory and visual interactions are commonly implemented using Time Division Multiplexing.
+However, these approaches encounter scalability issues when incorporating additional modalities, as computational complexity increases quadratically with sequence length.</p>
+
+<ol>
+<li>Generalization to open-ended tasks. Unsupervised or multitask pretraining are insufficient in learning the physical world laws, which is inherently a limitation.
+</li>
+</ol>
+
+<h2>A Conceptual Framework for L3+ Robots</h2>
+
+<p>Their framework defines the inputs which are from full modalities, outputs which are action sequences, monologues, and reasoning, and the streaming nature between the inputs and outputs.
+As for training paradigm, it could involve multimodal training from scratch, lifelong learning, and physical-oriented training.</p>
+<em>(The conceptual framework is interesting and should be more detailed. Currently it is still not clear how the real-time streaming is possible because the input and output throughput and processing time is very asymmetric, which can make streaming nonsensical)</em>
+
+        <footer>
+            <hr>
+            <p><em>Notes by Siyang Liu - Last updated: August 27, 2025</em></p>
+            <p><strong>Author:</strong> <a href="https://lsy641.github.io/">Siyang Liu</a> | <strong>Google Scholar:</strong> <a href="https://scholar.google.com/citations?user=2OjUAPUAAAAJ" rel="noopener" target="_blank">Profile</a></p>
+        </footer>
+    </article>
+</body>
+</html>
