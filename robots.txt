@@ -1,56 +1,6 @@
 User-agent: *
 Allow: /
 
-# Allow all search engines to crawl the entire site
-# This is appropriate for an academic website where you want maximum visibility
-
 # Sitemap location
 Sitemap: https://lsy641.github.io/sitemap.xml
 
-# Crawl delay (optional - helps prevent overwhelming your server)
-Crawl-delay: 1
-
-# Specific rules for different user agents
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Slurp
-Allow: /
-Crawl-delay: 1
-
-User-agent: DuckDuckBot
-Allow: /
-Crawl-delay: 1
-
-# Block access to development and template files
-Disallow: /live_server.py
-Disallow: /simple_live_server.py
-Disallow: /start_dev_server.sh
-Disallow: /requirements.txt
-Disallow: /ABOUT_ME_TEMPLATE.md
-Disallow: /SEO_GUIDE.md
-Disallow: /LICENSE.txt
-Disallow: /README.txt
-
-# Block access to unused template files
-Disallow: /onecolumn.html
-Disallow: /twocolumn1.html
-Disallow: /twocolumn2.html
-Disallow: /threecolumn.html
-
-# Block access to original CSS and JS (replaced by modern.css)
-Disallow: /assets/css/main.css
-Disallow: /assets/js/
-
-# Block access to SASS source files
-Disallow: /assets/sass/
-
-# Allow access to important assets
-Allow: /assets/css/modern.css
-Allow: /images/
-Allow: /notes/
