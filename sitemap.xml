@@ -26,6 +26,20 @@
     
     <!-- Research Notes -->
     <url>
+        <loc>https://lsy641.github.io/notes/towards-embodied-AI</loc>
+        <lastmod>2025-08-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://lsy641.github.io/notes/uiuc-CS443-ReinforcementLearning</loc>
+        <lastmod>2025-08-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
         <loc>https://lsy641.github.io/notes/roadmap-AI-in-robotics</loc>
         <lastmod>2025-08-18</lastmod>
         <changefreq>monthly</changefreq>
