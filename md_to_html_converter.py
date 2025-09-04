@@ -32,12 +32,12 @@ def extract_paper_info(markdown_content):
     if authors_match:
         paper_info['authors'] = authors_match.group(1).strip()
     
-    # Extract journal
+    # Extract journal (optional)
     journal_match = re.search(r'\*\*Journal:\*\*\s*(.+?)(?:\n|$)', markdown_content)
     if journal_match:
         paper_info['journal'] = journal_match.group(1).strip()
     
-    # Extract published date
+    # Extract published date (optional)
     published_match = re.search(r'\*\*Published:\*\*\s*(.+?)(?:\n|$)', markdown_content)
     if published_match:
         paper_info['published'] = published_match.group(1).strip()
@@ -552,6 +552,11 @@ def markdown_to_html(markdown_content, title="Document", author="Siyang Liu", do
     {meta_tags}
     {structured_data}
     {css}
+    <!-- MathJax for math rendering -->
+    <script>
+    window.MathJax = {{ tex: {{ inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$","$$"], ["\\[","\\]"]] }}, options: {{ skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }} }};
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <!-- Breadcrumb Navigation -->
@@ -582,6 +587,148 @@ def markdown_to_html(markdown_content, title="Document", author="Siyang Liu", do
     
     return html_doc
 
+def convert_markdown_to_html(markdown_content):
+    """Convert markdown content to HTML"""
+    
+    # Convert markdown to HTML
+    html_content = markdown_content
+    
+    # Headers (skip H1 since we have it in the header)
+    html_content = re.sub(r'^### (.*?)$', r'<h3>\1</h3>', html_content, flags=re.MULTILINE)
+    html_content = re.sub(r'^## (.*?)$', r'<h2>\1</h2>', html_content, flags=re.MULTILINE)
+    # Convert H1 to H2 to avoid duplication
+    html_content = re.sub(r'^# (.*?)$', r'<h2>\1</h2>', html_content, flags=re.MULTILINE)
+    
+    # Bold and italic
+    html_content = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', html_content)
+    html_content = re.sub(r'\*(.*?)\*', r'<em>\1</em>', html_content)
+    
+    # Links with proper attributes
+    html_content = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" rel="noopener" target="_blank">\1</a>', html_content)
+    
+    # Code blocks
+    html_content = re.sub(r'```(.*?)```', r'<pre><code>\1</code></pre>', html_content, flags=re.DOTALL)
+    html_content = re.sub(r'`([^`]+)`', r'<code>\1</code>', html_content)
+    
+    # Lists - Enhanced approach for complex nested structures
+    lines = html_content.split('\n')
+    processed_lines = []
+    i = 0
+    
+    while i < len(lines):
+        line = lines[i]
+        line_stripped = line.strip()
+        
+        # Handle ordered lists (1. item)
+        if re.match(r'^\d+\. ', line_stripped):
+            processed_lines.append('<ol>')
+            
+            # Process all consecutive ordered list items
+            while i < len(lines) and re.match(r'^\d+\. ', lines[i].strip()):
+                content = re.sub(r'^\d+\. ', '', lines[i].strip())
+                processed_lines.append(f'<li>{content}')
+                
+                # Look for nested content (indented with spaces)
+                j = i + 1
+                nested_content = []
+                while j < len(lines) and lines[j].startswith('    ') and lines[j].strip().startswith('* '):
+                    nested_item = lines[j].strip()[2:]  # Remove '* '
+                    
+                    # Collect all continuation lines for this nested item
+                    nested_text = [nested_item]
+                    k = j + 1
+                    while k < len(lines) and lines[k].startswith('    ') and not lines[k].strip().startswith('* '):
+                        nested_text.append(lines[k].strip())
+                        k += 1
+                    
+                    # Join the nested content
+                    complete_nested = ' '.join(nested_text)
+                    nested_content.append(f'<li>{complete_nested}</li>')
+                    j = k
+                
+                # Also look for any continuation text that belongs to the main list item
+                continuation_text = []
+                j = i + 1
+                while j < len(lines) and not lines[j].strip().startswith(('1. ', '2. ', '3. ', '4. ', '5. ', '6. ', '7. ', '8. ', '9. ')) and not lines[j].strip().startswith('- ') and not lines[j].strip().startswith('##') and not lines[j].strip().startswith('###') and lines[j].strip() != '':
+                    if not lines[j].startswith('    '):  # Not nested content
+                        continuation_text.append(lines[j].strip())
+                    j += 1
+                
+                if continuation_text:
+                    # Add continuation text to the current list item
+                    content += ' ' + ' '.join(continuation_text)
+                    # Update the list item with the combined content
+                    processed_lines[-1] = f'<li>{content}'
+                
+                if nested_content:
+                    processed_lines.append('<ul>')
+                    processed_lines.extend(nested_content)
+                    processed_lines.append('</ul>')
+                    i = j - 1  # Adjust index
+                
+                processed_lines.append('</li>')
+                i += 1
+            
+            processed_lines.append('</ol>')
+            continue
+        
+        # Handle unordered lists (- item)
+        elif line_stripped.startswith('- '):
+            processed_lines.append('<ul>')
+            
+            # Process all consecutive unordered list items
+            while i < len(lines) and lines[i].strip().startswith('- '):
+                content = lines[i].strip()[2:]  # Remove '- '
+                processed_lines.append(f'<li>{content}</li>')
+                i += 1
+            
+            processed_lines.append('</ul>')
+            continue
+        
+        # Handle standalone indented bullet points (* item) - convert to paragraphs
+        elif line.startswith('    ') and line_stripped.startswith('* '):
+            content = line_stripped[2:]  # Remove '* '
+            
+            # Handle multi-line content for this bullet point
+            full_content = [content]
+            j = i + 1
+            while j < len(lines) and lines[j].startswith('    ') and not lines[j].strip().startswith('* '):
+                # This is continuation of the same bullet point
+                full_content.append(lines[j].strip())
+                j += 1
+            
+            # Join all content and create a single paragraph
+            complete_content = ' '.join(full_content)
+            processed_lines.append(f'<p>{complete_content}</p>')
+            i = j  # Skip the lines we've already processed
+            continue
+        
+        # Regular line
+        else:
+            processed_lines.append(line)
+            i += 1
+    
+    html_content = '\n'.join(processed_lines)
+    
+    # Paragraphs
+    lines = html_content.split('\n')
+    for i, line in enumerate(lines):
+        line = line.strip()
+        if line and not line.startswith('<') and not line.startswith('#'):
+            lines[i] = f'<p>{line}</p>'
+    html_content = '\n'.join(lines)
+    
+    # Horizontal rules
+    html_content = re.sub(r'^---$', r'<hr>', html_content, flags=re.MULTILINE)
+    
+    # Blockquotes
+    html_content = re.sub(r'^> (.*?)$', r'<blockquote>\1</blockquote>', html_content, flags=re.MULTILINE)
+    
+    # Clean up multiple consecutive p tags
+    html_content = re.sub(r'</p>\s*<p>', '\n', html_content)
+    
+    return html_content
+
 def generate_html_content(markdown_content, title, description, keywords, author, paper_url=None, paper_title=None, paper_authors=None, paper_journal=None, paper_date=None, paper_doi=None):
     """Generate complete HTML content with modern styling"""
     
@@ -593,6 +740,19 @@ def generate_html_content(markdown_content, title, description, keywords, author
     
     # Create filename for the note
     note_filename = title.lower().replace(' ', '-').replace(':', '').replace('(', '').replace(')', '').replace(',', '').replace('.', '')
+    
+    # Build paper meta section separately to avoid nested f-string issues
+    paper_meta_section = ""
+    if any([paper_url, paper_title, paper_authors, paper_journal, paper_date, paper_doi]):
+        paper_meta_section = f'''
+
+<div class="paper-meta">
+    {f'<strong>Paper:</strong> <a href="{paper_url}" rel="noopener" target="_blank">{paper_title}</a><br>' if paper_url and paper_title else ''}
+    {f'<strong>Authors:</strong> {paper_authors}<br>' if paper_authors else ''}
+    {f'<strong>Journal:</strong> {paper_journal}<br>' if paper_journal else ''}
+    {f'<strong>Published:</strong> {paper_date}<br>' if paper_date else ''}
+    {f'<strong>DOI:</strong> <a href="https://doi.org/{paper_doi}" rel="noopener" target="_blank">{paper_doi}</a><br>' if paper_doi else ''}
+</div>'''
     
     # Generate HTML template with modern styling
     html_template = f'''<!DOCTYPE html>
@@ -645,6 +805,12 @@ def generate_html_content(markdown_content, title, description, keywords, author
     <!-- Navigation Links -->
     <link rel="up" href="https://lsy641.github.io/research-notes" />
     <link rel="home" href="https://lsy641.github.io/" />
+    
+    <!-- MathJax for math rendering -->
+    <script>
+    window.MathJax = {{ tex: {{ inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$","$$"], ["\\[","\\]"]] }}, options: {{ skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }} }};
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <!-- Structured Data for Article -->
     <script type="application/ld+json">
@@ -893,17 +1059,6 @@ def generate_html_content(markdown_content, title, description, keywords, author
     </div>
 
     <article>
-        <h2>{title}</h2>
-        
-        {f'''<h2>About the Paper</h2>
-
-<div class="paper-meta">
-    {f'<strong>Paper:</strong> <a href="{paper_url}" rel="noopener" target="_blank">{paper_title}</a><br>' if paper_url and paper_title else ''}
-    {f'<strong>Authors:</strong> {paper_authors}<br>' if paper_authors else ''}
-    {f'<strong>Journal:</strong> {paper_journal}<br>' if paper_journal else ''}
-    {f'<strong>Published:</strong> {paper_date}<br>' if paper_date else ''}
-    {f'<strong>DOI:</strong> <a href="https://doi.org/{paper_doi}" rel="noopener" target="_blank">{paper_doi}</a><br>' if paper_doi else ''}
-</div>''' if any([paper_url, paper_title, paper_authors, paper_journal, paper_date, paper_doi]) else ''}
 
         {html_content}
 
@@ -931,13 +1086,19 @@ def convert_file(input_file, output_file=None, title=None, author="Siyang Liu", 
     
     # Determine output filename
     if output_file is None:
-        output_file = input_file.replace('.md', '-seo.html')
+        output_file = input_file.replace('.md', '.html')
     
     # Determine title
     if title is None:
-        title = os.path.splitext(os.path.basename(input_file))[0]
-        # Convert filename to title case
-        title = title.replace('-', ' ').replace('_', ' ').title()
+        # Try to extract title from the first H1 heading in the markdown
+        title_match = re.search(r'^# (.+?)$', markdown_content, re.MULTILINE)
+        if title_match:
+            title = title_match.group(1).strip()
+        else:
+            # Fallback to filename if no H1 heading found
+            title = os.path.splitext(os.path.basename(input_file))[0]
+            # Convert filename to title case
+            title = title.replace('-', ' ').replace('_', ' ').title()
     
     # Extract paper information
     paper_info = extract_paper_info(markdown_content)
@@ -974,7 +1135,7 @@ def convert_file(input_file, output_file=None, title=None, author="Siyang Liu", 
         paper_info.get('title'),
         paper_info.get('authors'),
         paper_info.get('journal'),
-        paper_info.get('date'),
+        paper_info.get('published'),
         paper_info.get('doi')
     )
     
