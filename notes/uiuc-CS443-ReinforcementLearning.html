@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UIUC CS443 Reinforcement Learning - Course Note - Research Notes | Siyang Liu | University of Michigan</title>
+    <title>UIUC CS443 Reinforcement Learning - Course Notes - Research Notes | Siyang Liu | University of Michigan</title>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="I have had some knowledge in RL but forgot too much after the graduation of my master, so I followed the materials in the below link to catch up." />
@@ -16,31 +16,31 @@
     <meta name="rating" content="general" />
     
     <!-- Open Graph Meta Tags for Social Media -->
-    <meta property="og:title" content="UIUC CS443 Reinforcement Learning - Course Note - Research Notes | Siyang Liu" />
+    <meta property="og:title" content="UIUC CS443 Reinforcement Learning - Course Notes - Research Notes | Siyang Liu" />
     <meta property="og:description" content="I have had some knowledge in RL but forgot too much after the graduation of my master, so I followed the materials in the below link to catch up." />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://lsy641.github.io/notes/uiuc-CS443-ReinforcementLearning" />
+    <meta property="og:url" content="https://lsy641.github.io/notes/uiuc-cs443-reinforcement-learning---course-notes" />
     <meta property="og:image" content="https://lsy641.github.io/images/profile.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="UIUC CS443 Reinforcement Learning - Course Note Research Notes" />
+    <meta property="og:image:alt" content="UIUC CS443 Reinforcement Learning - Course Notes Research Notes" />
     <meta property="og:site_name" content="Siyang Liu - Academic Website" />
     <meta property="og:locale" content="en_US" />
     <meta property="article:author" content="Siyang Liu" />
-    <meta property="article:published_time" content="2025-08-21T20:27:00+00:00" />
-    <meta property="article:modified_time" content="2025-08-21T20:27:00+00:00" />
+    <meta property="article:published_time" content="2025-09-21T22:54:47+00:00" />
+    <meta property="article:modified_time" content="2025-09-21T22:54:47+00:00" />
     <meta property="article:section" content="Research Notes" />
     <meta property="article:tag" content="['research notes', 'academic analysis', 'literature review']" />
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="UIUC CS443 Reinforcement Learning - Course Note" />
+    <meta name="twitter:title" content="UIUC CS443 Reinforcement Learning - Course Notes" />
     <meta name="twitter:description" content="I have had some knowledge in RL but forgot too much after the graduation of my master, so I followed..." />
     <meta name="twitter:image" content="https://lsy641.github.io/images/profile.jpg" />
     <meta name="twitter:creator" content="@liusiyang_641" />
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://lsy641.github.io/notes/uiuc-CS443-ReinforcementLearning" />
+    <link rel="canonical" href="https://lsy641.github.io/notes/uiuc-cs443-reinforcement-learning---course-notes" />
     
     <!-- Academic Profile Links -->
     <link rel="author" href="https://scholar.google.com/citations?user=2OjUAPUAAAAJ" />
@@ -49,10 +49,9 @@
     <link rel="up" href="https://lsy641.github.io/research-notes" />
     <link rel="home" href="https://lsy641.github.io/" />
     
-    <!-- Structured Data for Article -->
     <!-- MathJax for math rendering -->
     <script>
-    window.MathJax = { tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$","$$"], ["\\[","\\]"]] }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] } };
+    window.MathJax = { tex: { inlineMath: [["$", "$"], ["\(", "\)"]], displayMath: [["$$","$$"], ["\[","\]"]] }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] } };
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
@@ -61,7 +60,7 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "UIUC CS443 Reinforcement Learning - Course Note",
+        "headline": "UIUC CS443 Reinforcement Learning - Course Notes",
         "description": "I have had some knowledge in RL but forgot too much after the graduation of my master, so I followed the materials in the below link to catch up.",
         "image": "https://lsy641.github.io/images/profile.jpg",
         "author": {
@@ -82,11 +81,11 @@
             "name": "Siyang Liu's Academic Website",
             "url": "https://lsy641.github.io/"
         },
-        "datePublished": "2025-08-21T20:27:00+00:00",
-        "dateModified": "2025-08-21T20:27:00+00:00",
+        "datePublished": "2025-09-21T22:54:47+00:00",
+        "dateModified": "2025-09-21T22:54:47+00:00",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://lsy641.github.io/notes/uiuc-CS443-ReinforcementLearning"
+            "@id": "https://lsy641.github.io/notes/uiuc-cs443-reinforcement-learning---course-notes"
         },
         "about": [
             {"@type": "Thing", "name": "Research Notes"}, 
@@ -303,10 +302,9 @@
     </div>
 
     <article>
-        <h2>UIUC CS443 Reinforcement Learning - Course Note</h2>
-        
-        
 
+        
+<h2>UIUC CS443 Reinforcement Learning - Course Notes</h2>
 
 <p>I have had some knowledge in RL but forgot too much after the graduation of my master, so I followed the materials in the below link to catch up.</p>
 
@@ -316,19 +314,22 @@
 
 <h3>Markov Decision Process</h3>
 
-<p>A Markov decision process is a 4-tuple $(S,A,P_{a},R_{a})$
-$S$: state
-$A$: action
-$P_a$: transition. $P(S_(t+1)|S_t, a_t)$ (So action has control over transition)
-$R_{a}$: immediate reward $R_s^a = E[R_(t+1)|S_t=s, A_t=a]$
-MDP assumes the future depends on the present and not the past.
-Q1: but the current state can be represented using the past information?
-Q2: why the reward function is designed as expectation that thus is independent with the past? Can it be a matrix $R(S_(t+1),S_t, A_t)$? Using expectation will ignore an optimal path to {S_t} from some {S_(t-1)^k} though rewards from {S_{t-1}^!k} are extreme low. This make the game not suited for achieving highest rewards (with high risk) but optimal reward expectation.</p>
+<p>A Markov decision process is a 4-tuple $(S,A,P_{a},R_{a})$</p>
+<p>$S$: state</p>
+<p>$A$: action</p>
+<p>$P_a$: transition. $P(S_(t+1)|S_t, a_t)$ (So action has control over transition)</p>
+<p>$R_{a}$: immediate reward $R_s^a = E[R_(t+1)|S_t=s, A_t=a]$</p>
+
+<p>MDP assumes the future depends on the present and not the past.</p>
+
+<p>Q1: but the current state can be represented using the past information?</p>
+
+<p>Q2: why the reward function is designed as expectation that thus is independent with the past? Can it be a matrix $R(S_(t+1),S_t, A_t)$? Using expectation will ignore an optimal path to {S_t} from some {S_(t-1)^k} though rewards from {S_{t-1}^!k} are extreme low. This make the game not suited for achieving highest rewards (with high risk) but optimal reward expectation.</p>
 
 <h3>Optimal Policy</h3>
 
-<p>Optimal policy $\pi$ guides how the agent acts in its current state.
-What is optimal needs to be defined. Maximize expected "discounted future reward sum" (return) is an objective for getting optimal policy.</p>
+<p>Optimal policy $\pi$ guides how the agent acts in its current state.</p>
+<p>What is optimal needs to be defined. Maximize expected "discounted future reward sum" (return) is an objective for getting optimal policy.</p>
 
 <h3>Core Challenges of RL</h3>
 
@@ -352,13 +353,14 @@ What is optimal needs to be defined. Maximize expected "discounted future reward
 
 <h3>A Machine Learning view of RL</h3>
 
-<p>contextual bandits take into account specific user or environment characteristics (context) when choosing an action.
-bandits focus on immediate rewards in a single-step scenario.</p>
+<p>contextual bandits take into account specific user or environment characteristics (context) when choosing an action.</p>
+<p>bandits focus on immediate rewards in a single-step scenario.</p>
 
 <h3>A few misconceptions about RL</h3>
 
-<p>RL: Planning or Learning??
-Two types of scenarios in RL research: 1. Solving a large planning problem using a learning approach (e.g., alphago). Transition dynamics (Go rules) known, but too many states. Run the simulator to collect data. Get good value funtions.</p>
+<p>RL: Planning or Learning??</p>
+
+<p>Two types of scenarios in RL research: 1. Solving a large planning problem using a learning approach (e.g., alphago). Transition dynamics (Go rules) known, but too many states. Run the simulator to collect data. Get good value funtions.</p>
 <ol>
 <li>Solving a learning problem (e.g.,  adaptive medical treatment). Transition dynamics unknown (and too many states). Interact with the environment to collect data. Great potential for RL, but not realized yet!
 </li>
@@ -380,30 +382,45 @@ Two types of scenarios in RL research: 1. Solving a large planning problem using
 <h2>C2: Markov Decision Processes</h2>
 
 
-<p>An MDP $M = (A, S, P, R, \gamma) $
-If there is only one action, MDP collaps into Markov Chain with a reward function
-If the transition is deterministic, the MDP becomes a directed graph</p>
+<p>An MDP $M = (A, S, P, R, \gamma) $</p>
+
+
+<p>If there is only one action, MDP collaps into Markov Chain with a reward function</p>
+
+<p>If the transition is deterministic, the MDP becomes a directed graph</p>
 
 <h3>Why discounting? (cont.)</h3>
 
-<p>Even very light discount make the expected reward finite.
-Heavy discount encourages fast planning / learning.
-Return: $G_t = \sum_i^N \gamma^k R_{t+1+i}$. A trajectory corresponds with a return. With policy distribution, we can get expected return (value function).
-With return we can have state-value function $E_{pi}[G_t|S_t=s]$, action-value or q-value function $E[G_t|S_t=s, A_t=a]$
-Adavantage function: difference between state-value and action-value
-$E_{\pi}[G_t|A_t=a, S_t=s] - E_{\pi}[G_t|S_t=s]$
-Bellman Equation provides recursive formula for calculating value function. Because reward is unrelated to previous states. The recursive equation has a direct solution. $V_{\pi} = R_s + \gamma \sum P_{s}V_{\pi}$
-To solve optimal value function, if we know reward and transition probability function, we can solve it via DP, if not, there is no close form solution. We can use Monte-Carlo methods, Temporal difference learning (model-free and learns with episodes), Policy gradient (REINFORCE, Actor-Critic, A2C/A3C, ACKTR, PPO, DPG, DDPG).
-Model-free means we don't know transition probability.
-Q: again, will using expectation cause an expected best (smooth) but not best policy?
-Q: similar to the advantage function that consider a factor (action), can we consider other factors such time, so we get difference between state-value functions from the same state but different time or action-value functions of it.
-Q: the problem and its mathematical definition have a lot of assumptions... why can't we design in another way?</p>
+<p>Even very light discount make the expected reward finite.</p>
+
+<p>Heavy discount encourages fast planning / learning.</p>
+
+<p>Return: $G_t = \sum_i^N \gamma^k R_{t+1+i}$. A trajectory corresponds with a return. With policy distribution, we can get expected return (value function).</p>
+
+<p>With return we can have state-value function $E_{pi}[G_t|S_t=s]$, action-value or q-value function $E[G_t|S_t=s, A_t=a]$</p>
+
+<p>Adavantage function: difference between state-value and action-value</p>
+<p>$E_{\pi}[G_t|A_t=a, S_t=s] - E_{\pi}[G_t|S_t=s]$</p>
+
+<p>Bellman Equation provides recursive formula for calculating value function. Because reward is unrelated to previous states.</p>
+
+<p>The recursive equation has a direct solution. $V_{\pi} = R_s + \gamma \sum P_{s}V_{\pi}$</p>
+
+<p>To solve optimal value function, if we know reward and transition probability function, we can solve it via DP, if not, there is no close form solution. We can use Monte-Carlo methods, Temporal difference learning (model-free and learns with episodes), Policy gradient (REINFORCE, Actor-Critic, A2C/A3C, ACKTR, PPO, DPG, DDPG).</p>
+
+<p>Model-free means we don't know transition probability.</p>
+
+<p>Q: again, will using expectation cause an expected best (smooth) but not best policy?</p>
+
+<p>Q: similar to the advantage function that consider a factor (action), can we consider other factors such time, so we get difference between state-value functions from the same state but different time or action-value functions of it.</p>
+
+<p>Q: the problem and its mathematical definition have a lot of assumptions... why can't we design in another way?</p>
 
 
 
         <footer>
             <hr>
-            <p><em>Notes by Siyang Liu - Last updated: August 21, 2025</em></p>
+            <p><em>Notes by Siyang Liu - Last updated: September 21, 2025</em></p>
             <p><strong>Author:</strong> <a href="https://lsy641.github.io/">Siyang Liu</a> | <strong>Google Scholar:</strong> <a href="https://scholar.google.com/citations?user=2OjUAPUAAAAJ" rel="noopener" target="_blank">Profile</a></p>
         </footer>
     </article>
