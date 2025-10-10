@@ -42,6 +42,30 @@
 		
 		<link rel="stylesheet" href="assets/css/modern.css" />
 		
+		<!-- Additional styling for research notes -->
+		<style>
+			.category {
+				background-color: #3498db;
+				color: white;
+				padding: 2px 8px;
+				border-radius: 12px;
+				font-size: 0.8em;
+				font-weight: 500;
+			}
+			.date {
+				color: #666;
+				font-style: italic;
+			}
+			#research-notes-chronological ul.link-list li {
+				margin-bottom: 25px;
+				padding-bottom: 15px;
+				border-bottom: 1px solid #eee;
+			}
+			#research-notes-chronological ul.link-list li:last-child {
+				border-bottom: none;
+			}
+		</style>
+		
 		<!-- Structured Data for Research Notes Collection -->
 		<script type="application/ld+json">
 		{
@@ -147,166 +171,39 @@ ok										<li><a href="/notes/towards-embodied-AI">Reading notes on paper "Tow
 									This page contains my research notes, tutorials, and insights on various topics in my field. 
 								</p>
 
-								<div class="row">
-									<div class="col-6 col-12-small">
-								<section id="embodied-ai">
+								<!-- Chronological Research Notes -->
+								<section id="research-notes-chronological">
+									<header>
+										<h3>Research Notes (Chronological Order)</h3>
+									</header>
 									<ul class="link-list">
 										<li>
+											<strong><a href="notes/reinforcement-learning-intro">Reinforcement Learning, An Introduction - Book Notes</a></strong><br>
+											<span class="date">October 10, 2025</span> | <span class="category">Reinforcement Learning</span><br>
+											Comprehensive book notes on reinforcement learning fundamentals, covering tabular solution methods, Monte Carlo methods, and multi-armed bandits.
+										</li>
+										<li>
 											<strong><a href="notes/towards-embodied-AI">Reading notes on "Toward Embodied AGI: A Review of Embodied AI and the Road Ahead"</a></strong><br>
-											<span class="date">August 27, 2025</span><br>
+											<span class="date">August 27, 2025</span> | <span class="category">Embodied AI</span><br>
+											Detailed analysis of the comprehensive review paper on embodied AI and the path toward embodied AGI.
+										</li>
+										<li>
+											<strong><a href="notes/uiuc-CS443-ReinforcementLearning">Reading notes on UIUC CS443 Reinforcement Learning course</a></strong><br>
+											<span class="date">August 21, 2025</span> | <span class="category">Reinforcement Learning</span><br>
+											Course notes from UIUC CS443 covering fundamental concepts and algorithms in reinforcement learning.
+										</li>
+										<li>
+											<strong><a href="notes/roadmap-AI-in-robotics">Reading notes on "A roadmap for AI in robotics"</a></strong><br>
+											<span class="date">August 7, 2025</span> | <span class="category">Embodied AI</span><br>
+											Comprehensive notes on the Nature paper about AI in robotics, covering challenges, opportunities, and future directions.
 										</li>
 									</ul>
 								</section>
-								</div>
-								<div class="col-6 col-12-small">
-									<section id="rl">
-										<ul class="link-list">
-											<li>
-												<strong><a href="notes/reinforcement-learning-intro">Reinforcement Learning, An Introduction - Book Notes</a></strong><br>
-												<span class="date">October 10, 2025</span><br>
-											</li>
-											<li>
-												<strong><a href="notes/uiuc-CS443-ReinforcementLearning">Reading notes on UIUC CS443 Reinforcement Learning course</a></strong><br>
-												<span class="date">August 21, 2025</span><br>
-											</li>
-										</ul>
-									</section>
-								</div>
-								</div>
-
-									<div class="row">
-
-										
-										<div class="col-6 col-12-small">
-											<section id="embodied-ai-2">
-												<ul class="link-list">
-													<li>
-														<strong><a href="notes/roadmap-AI-in-robotics">Reading notes on "A roadmap for AI in robotics"</a></strong><br>
-														<span class="date">August 7, 2025</span><br>
-													</li>
-												</ul>
-											</section>
-										</div>
-									</div>
 
 
 
 										
-										<!-- 
-										Natural Language Processing Section
-										<section id="nlp">
-											<header>
-												<h3>Natural Language Processing</h3>
-											</header>
-											<div class="row">
-												<div class="col-6 col-12-small">
-													<ul class="link-list">
-														Add your NLP notes here
-													</ul>
-												</div>
-												<div class="col-6 col-12-small">
-													<ul class="link-list">
-														Add your NLP notes here
-													</ul>
-												</div>
-											</div>
-										</section>
 
-										AI Agents Section
-										<section id="ai-agents">
-											<header>
-												<h3>AI Agents</h3>
-											</header>
-											<div class="row">
-												<div class="col-6 col-12-small">
-													<ul class="link-list">
-														Add your AI Agents notes here
-													</ul>
-												</div>
-												<div class="col-6 col-12-small">
-													<ul class="link-list">
-														Add your AI Agents notes here
-													</ul>
-												</div>
-											</div>
-										</section>
-
-										Mental Health AI Section
-										<section id="mental-health-ai">
-											<header>
-												<h3>Mental Health AI</h3>
-											</header>
-											<div class="row">
-												<div class="col-6 col-12-small">
-													<ul class="link-list">
-														Add your Mental Health AI notes here
-													</ul>
-												</div>
-												<div class="col-6 col-12-small">
-													<ul class="link-list">
-														Add your Mental Health AI notes here
-													</ul>
-												</div>
-											</div>
-										</section>
-
-										Human-Computer Interaction Section
-										<section id="hci">
-											<header>
-												<h3>Human-Computer Interaction</h3>
-											</header>
-											<div class="row">
-												<div class="col-6 col-12-small">
-													<ul class="link-list">
-														Add your HCI notes here
-													</ul>
-												</div>
-												<div class="col-6 col-12-small">
-													<ul class="link-list">
-														Add your HCI notes here
-													</ul>
-												</div>
-											</div>
-										</section>
-
-										Retrieval-Augmented Generation Section
-										<section id="rag">
-											<header>
-												<h3>Retrieval-Augmented Generation</h3>
-											</header>
-											<div class="row">
-												<div class="col-6 col-12-small">
-													<ul class="link-list">
-														Add your RAG notes here
-													</ul>
-												</div>
-												<div class="col-6 col-12-small">
-													<ul class="link-list">
-														Add your RAG notes here
-													</ul>
-												</div>
-											</div>
-										</section>
-
-										LLM Alignment Section
-										<section id="llm-alignment">
-											<header>
-												<h3>Large Language Model Alignment</h3>
-											</header>
-											<div class="row">
-												<div class="col-6 col-12-small">
-													<ul class="link-list">
-														Add your LLM Alignment notes here
-													</ul>
-												</div>
-												<div class="col-6 col-12-small">
-													<ul class="link-list">
-														Add your LLM Alignment notes here
-													</ul>
-												</div>
-											</div>
-										</section>
-										-->
 
 								</section>
 							</div>
@@ -314,73 +211,7 @@ ok										<li><a href="/notes/towards-embodied-AI">Reading notes on paper "Tow
 					</div>
 				</main>
 
-			<!-- Footer -->
-			<!--
-				<section id="footer">
-					<div class="container">
-						<div class="row">
-							<div class="col-8 col-12-medium">
 
-								Links
-									<section>
-										<h2>Quick Links</h2>
-										<div>
-											<div class="row">
-												<div class="col-3 col-12-small">
-													<ul class="link-list last-child">
-														<li><a href="/">About Me</a></li>
-														<li><a href="https://scholar.google.com/citations?user=2OjUAPUAAAAJ">Publications</a></li>
-														<li><a href="cv.html">CV/Resume</a></li>
-														<li><a href="teaching.html">Teaching</a></li>
-													</ul>
-												</div>
-												<div class="col-3 col-12-small">
-													<ul class="link-list last-child">
-														<li><a href="https://scholar.google.com/citations?user=2OjUAPUAAAAJ">Google Scholar</a></li>
-														<li><a href="mailto:lsiyang@umich.edu">Email (UMich)</a></li>
-														<li><a href="mailto:liusyang641@gmail.com">Email (Gmail)</a></li>
-														<li><a href="tel:+1-734-8347522">Phone</a></li>
-													</ul>
-												</div>
-												<div class="col-3 col-12-small">
-													<ul class="link-list last-child">
-														<li><a href="https://github.com">GitHub</a></li>
-														<li><a href="https://linkedin.com">LinkedIn</a></li>
-														<li><a href="https://x.com/liusiyang_641">X (Twitter)</a></li>
-														<li><a href="https://researchgate.net">ResearchGate</a></li>
-													</ul>
-												</div>
-												<div class="col-3 col-12-small">
-													<ul class="link-list last-child">
-														<li><a href="teaching.html">Teaching</a></li>
-														<li><a href="talks.html">Talks</a></li>
-														<li><a href="resources.html">Resources</a></li>
-														<li><a href="blog.html">Blog</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</section>
-
-							</div>
-							<div class="col-4 col-12-medium imp-medium">
-
-								Blurb
-									<section>
-										<h2>About These Notes</h2>
-										<p>
-											These research notes represent my ongoing learning and exploration in various areas of natural language processing, 
-											AI agents, mental health AI systems, and human-computer interaction. They are written for both personal reference 
-											and to share knowledge with the broader research community. Feel free to use these notes for your own learning, 
-											and please cite appropriately if you reference them in your work.
-										</p>
-									</section>
-
-							</div>
-						</div>
-					</div>
-				</section>
-			-->
 
 			Copyright
 			<div id="copyright">
