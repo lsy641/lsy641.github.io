@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reinforcement Learning, An Introduction - Research Notes | Siyang Liu | University of Michigan</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="the state and action spaces are small enough for the approximate value functions to be represented as arrays, or tables" />
+    <meta name="keywords" content="research notes, academic analysis, literature review, academic research, artificial intelligence" />
+    <meta name="author" content="Siyang Liu" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="language" content="en" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Reinforcement Learning, An Introduction - Research Notes | Siyang Liu" />
+    <meta property="og:description" content="the state and action spaces are small enough for the approximate value functions to be represented as arrays, or tables" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://lsy641.github.io/notes/reinforcement-learning-an-introduction" />
+    <meta property="og:image" content="https://lsy641.github.io/images/profile.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Reinforcement Learning, An Introduction Research Notes" />
+    <meta property="og:site_name" content="Siyang Liu - Academic Website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:author" content="Siyang Liu" />
+    <meta property="article:published_time" content="2025-10-10T13:29:21+00:00" />
+    <meta property="article:modified_time" content="2025-10-10T13:29:21+00:00" />
+    <meta property="article:section" content="Research Notes" />
+    <meta property="article:tag" content="['research notes', 'academic analysis', 'literature review']" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Reinforcement Learning, An Introduction" />
+    <meta name="twitter:description" content="the state and action spaces are small enough for the approximate value functions to be represented a..." />
+    <meta name="twitter:image" content="https://lsy641.github.io/images/profile.jpg" />
+    <meta name="twitter:creator" content="@liusiyang_641" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://lsy641.github.io/notes/reinforcement-learning-an-introduction" />
+    
+    <!-- Academic Profile Links -->
+    <link rel="author" href="https://scholar.google.com/citations?user=2OjUAPUAAAAJ" />
+    
+    <!-- Navigation Links -->
+    <link rel="up" href="https://lsy641.github.io/research-notes" />
+    <link rel="home" href="https://lsy641.github.io/" />
+    
+    <!-- MathJax for math rendering -->
+    <script>
+    window.MathJax = { 
+        tex: { 
+            inlineMath: [["$", "$"], ["\(", "\)"]], 
+            displayMath: [["$$","$$"], ["\[","\]"]],
+            processEscapes: true,
+            processEnvironments: true
+        }, 
+        options: { 
+            skipHtmlTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreHtmlClass: 'tex2jax_ignore',
+            processHtmlClass: 'tex2jax_process'
+        },
+        chtml: {
+            displayAlign: 'left',
+            displayIndent: '0'
+        }
+    };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <!-- Structured Data for Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Reinforcement Learning, An Introduction",
+        "description": "the state and action spaces are small enough for the approximate value functions to be represented as arrays, or tables",
+        "image": "https://lsy641.github.io/images/profile.jpg",
+        "author": {
+            "@type": "Person",
+            "name": "Siyang Liu",
+            "url": "https://lsy641.github.io/",
+            "jobTitle": "Ph.D. Student in Computer Engineering",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "University of Michigan"
+            },
+            "sameAs": [
+                "https://scholar.google.com/citations?user=2OjUAPUAAAAJ"
+            ]
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Siyang Liu's Academic Website",
+            "url": "https://lsy641.github.io/"
+        },
+        "datePublished": "2025-10-10T13:29:21+00:00",
+        "dateModified": "2025-10-10T13:29:21+00:00",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://lsy641.github.io/notes/reinforcement-learning-an-introduction"
+        },
+        "about": [
+            {"@type": "Thing", "name": "Research Notes"}, 
+            {"@type": "Thing", "name": "Academic Analysis"},
+            {"@type": "Thing", "name": "Literature Review"}
+        ],
+        "keywords": "research notes, academic analysis, literature review, academic research, artificial intelligence",
+        "articleSection": "Research Notes",
+        "inLanguage": "en",
+        "isPartOf": {
+            "@type": "CollectionPage",
+            "name": "Research Notes",
+            "url": "https://lsy641.github.io/research-notes"
+        }
+        
+    }
+    </script>
+    
+    <!-- Additional Structured Data for Breadcrumb -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://lsy641.github.io/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Research Notes",
+                "item": "https://lsy641.github.io/research-notes"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Reading Notes",
+                "item": "https://lsy641.github.io/notes/"
+            }
+        ]
+    }
+    </script>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        h1 { font-size: 2.2em; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { font-size: 1.8em; border-bottom: 1px solid #bdc3c7; padding-bottom: 5px; }
+        h3 { font-size: 1.4em; }
+        h4 { font-size: 1.2em; }
+        p { margin-bottom: 15px; }
+        ul, ol { margin-bottom: 15px; padding-left: 30px; }
+        li { margin-bottom: 5px; }
+        
+        /* Nested list styling */
+        ul ul, ol ul, ul ol, ol ol {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+        
+        /* Make nested lists visually distinct */
+        li > ul, li > ol {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        
+        /* Style for list items with nested content */
+        li:has(ul), li:has(ol) {
+            margin-bottom: 15px;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #3498db;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            padding-left: 20px;
+            color: #555;
+            font-style: italic;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        strong { font-weight: bold; }
+        em { font-style: italic; }
+        hr {
+            border: none;
+            border-top: 1px solid #bdc3c7;
+            margin: 30px 0;
+        }
+        .paper-meta {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        .note-info {
+            background-color: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .breadcrumb {
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 0px;
+            font-size: 0.9em;
+        }
+        .breadcrumb a {
+            color: #666;
+        }
+        .breadcrumb a:hover {
+            color: #3498db;
+        }
+        .navigation {
+            margin: 0 0;
+            padding: 5px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 0px solid #e9ecef;
+        }
+        .navigation a {
+            margin-right: 15px;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        .navigation a:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+        }
+        article {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            margin: 20px 0;
+        }
+        header {
+            margin-bottom: 30px;
+        }
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        /* Math equation styling */
+        .MathJax_Display {
+            margin: 1em 0;
+            text-align: left !important;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        
+        /* Responsive math equations */
+        @media (max-width: 768px) {
+            .MathJax_Display {
+                font-size: 0.9em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .MathJax_Display {
+                font-size: 0.8em;
+            }
+        }
+        
+        /* Ensure math doesn't break layout */
+        mjx-container {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Long equations should scroll horizontally */
+        mjx-container[display="true"] {
+            overflow-x: auto;
+            overflow-y: hidden;
+            max-width: 100%;
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="https://lsy641.github.io/">Home</a> &gt; 
+        <a href="https://lsy641.github.io/research-notes">Research Notes</a> &gt; 
+        Reading Notes
+    </nav>
+
+    <!-- Navigation Links -->
+    <div class="navigation">
+        <a href="https://lsy641.github.io/">← Back to Home</a>
+        <a href="https://lsy641.github.io/research-notes">← Back to Research Notes</a>
+    </div>
+
+    <article>
+
+        <h2>Reinforcement Learning, An Introduction</h2>
+
+<h2>Tabular Solution Methods</h2>
+<p>the state and action spaces are small enough for the approximate value functions to be represented as arrays, or tables</p>
+
+<h3>c.2 Multi-armed Bandits</h3>
+
+
+#### 2.1 K-armed bandits problem
+<p>The <em>k</em>-armed bandit problem is about repeatedly choosing among <em>k</em> actions, where each action <em>a</em> gives a reward with expected value $ q_<em>(a) = \mathbb{E}[R_t \mid A_t = a] $. The challenge is balancing <strong>exploitation</strong> (choosing the best-known action) with <strong>exploration</strong> (trying other actions to improve estimates), since you don’t know the true ( q_</em>(a) ) values in advance.</p>
+
+
+#### 2.2 Action-value problem
+
+<p>We estimate the value of an action (a) at time (t) by the average of past rewards:</p>
+$$Q_t(a) = \frac{\sum_{i=1}^{t-1} R_i \cdot \mathbf{1}*{A_i=a}}{\sum*{i=1}^{t-1} \mathbf{1}_{A_i=a}}.$$
+To choose actions, the <strong>greedy method</strong> picks $ A_t = \arg\max_a Q_t(a) $, while a better strategy is <strong>ε-greedy</strong>, which usually exploits the best action but sometimes explores randomly.
+
+
+#### 2.4 Incremental implementation
+
+Instead of storing all past rewards, you can update an action’s value estimate with <strong>constant memory/time</strong> using a running average. The incremental rule is
+$$Q_{n+1}=Q_n+\frac{1}{n}\big(R_n-Q_n\big),$$
+<p>where (R_n) is the (n)-th reward for that action.</p>
+
+
+<p>In <strong>nonstationary</strong> problems we usually don’t want convergence to a fixed number; with constant (\alpha), (Q_n) <strong>tracks</strong> a moving (q_*(a,t)) instead of settling.</p>
+
+
+#### 2.5 Nonstationary problems
+
+<p>For nonstationary bandits, use a constant step size to favor recent rewards:</p>
+$$Q_{n+1}=Q_n+\alpha (R_n-Q_n),\quad 0<\alpha\le1,$$
+which makes $Q_{n+1}$ an <strong>exponential recency-weighted average</strong> with weight on past reward $R_i$ equal to $\alpha(1-\alpha)^{n-i}$.
+
+With varying step sizes ${\alpha_n}$, convergence to a fixed value requires $\sum_{n=1}^\infty \alpha_n=\infty$ and $\sum_{n=1}^\infty \alpha_n^2<\infty$; 
+
+constant $\alpha$ violates the second, so it <strong>tracks</strong> changing values instead of converging—useful in nonstationary settings.
+
+
+#### 2.6 Initial values
+
+Set <strong>optimistic initial values</strong> (e.g., $Q_1(a)=c$ with large $c$) so a greedy agent ($\varepsilon=0$) tries many actions early—each action is selected until its estimate drops toward its true mean after “disappointing” rewards. This gives temporary exploration that works in <strong>stationary</strong> tasks but fades once estimates settle. It’s brittle for <strong>nonstationary</strong> problems Because their influence disappears quickly and nonstationary tasks need ongoing exploration, not a one-time push; empirically, optimistic-greedy can catch up to $\varepsilon$-greedy but only because the optimism forces early exploration.
+
+
+#### 2.7 Up-confidence-bound
+
+The <strong>Upper-Confidence-Bound (UCB)</strong> method chooses actions by balancing their estimated value and uncertainty:
+$$A_t = \arg\max_a \Big[ Q_t(a) + c\sqrt{\tfrac{\ln t}{N_t(a)}} \Big],$$
+<p>where $Q_t(a)$ is the estimated value, $N_t(a)$ is how often $a$ was tried, and $c$ controls exploration. This way, rarely chosen actions get an extra boost from the uncertainty term, leading to more systematic exploration than $\varepsilon$-greedy, and often better long-term performance.</p>
+
+
+
+
+#### 2.8 gradient bandits problem
+
+<p>Gradient bandit algorithms assign each action a <strong>preference</strong> $H_t(a)$, and select actions using a softmax distribution:</p>
+$$\pi_t(a) = \frac{e^{H_t(a)}}{\sum_b e^{H_t(b)}}.$$
+After observing reward $R_t$, preferences are updated by gradient ascent: chosen action’s $H_t$ increases if $R_t$ is above the baseline $\bar{R}_t$, decreases if below, while non-chosen actions are updated in the opposite direction—this baseline keeps learning stable and adaptive.
+
+The <strong>gradient bandit algorithm</strong> can be derived as <strong>stochastic gradient ascent</strong> on expected reward. The update
+$$H_{t+1}(a) = H_t(a) + \alpha (R_t - \bar{R}_t)(\mathbf{1}_{a=A_t} - \pi_t(a))$$
+<p>comes from taking the performance gradient $\frac{\partial \mathbb{E}[R_t]}{\partial H_t(a)}$, where $\pi_t(a)$ is the softmax policy. This derivation proves the algorithm increases expected reward step by step and connects the intuitive update rule in (2.12) to formal gradient ascent theory.</p>
+
+
+<h3>Why this makes sense:</h3>
+
+<ol>
+<li><strong>Objective:</strong> In gradient bandits, the goal is to maximize the expected reward $\mathbb{E}[R_t] = \sum_x \pi_t(x) q(x),$ where $q(x)$ is the true expected reward of action $x$. $\pi_t(x)$ is a function of $H_t(x)$, as we introduced before.
+</li>
+</ol>
+<p>In gradient bandits, the goal is to maximize the expected reward</p>
+<p>$\mathbb{E}[R_t] = \sum_x \pi_t(x) q(x),$</p>
+<p>where $q(x)$ is the true expected reward of action $x$. $\pi_t(x)$ is a function of $H_t(x)$, as we introduced before.</p>
+
+<ol start="2">
+<li><strong>Gradient ascent idea:</strong> If we treat the action preferences $H_t(a)$ as parameters, then the natural way to improve them is to move <strong>in the direction of the gradient</strong> of the expected reward: $H \leftarrow H + \alpha \nabla_H \mathbb{E}[R].$
+</li>
+</ol>
+<p>If we treat the action preferences $H_t(a)$ as parameters, then the natural way to improve them is to move <strong>in the direction of the gradient</strong> of the expected reward:</p>
+<p>$H \leftarrow H + \alpha \nabla_H \mathbb{E}[R].$</p>
+
+<p>The derivative with respect to a preference parameter $H_t(a)$ is</p>
+<p>$\frac{\partial \mathbb{E}[R_t]}{\partial H_t(a)} = \sum_x q_*(x) \frac{\partial \pi_t(x)}{\partial H_t(a)}.$</p>
+
+<p>We know $\nabla_H \pi_t(x) = \pi_t(x)(\mathbf{1}_{a=A_t} - \pi_t(a))$.</p>
+
+<p>So,</p>
+$$    \frac{\partial \mathbb{E}[R_t]}{\partial H_t(a)} = \sum_x q_*(x) \pi_t(x)(\mathbf{1}_{a=A_t} - \pi_t(a)) = \sum_x (q_*(x) - B_t) \pi_t(x)(\mathbf{1}_{a=A_t} - \pi_t(a)) = (\mathbb{E}[R_t]-\bar{R}_t)(\mathbf{1}_{a=A_t} - \pi_t(a))$$
+    $B_t$ is anything that doesn't depend on $x$, so it can be used to form a baseline $\bar{R}_t$ with $\pi_t(x)$.
+
+    Baseline is introduced to make the update with lower variance and more stable.
+
+
+<ol start="3">
+<li><strong>Stochastic approximation:</strong>
+</li>
+</ol>
+
+    
+   We don’t know $\mathbb{E}[R_t]$ exactly, only samples $R_t$. So instead of the full gradient, we use a <strong>stochastic estimate</strong> based on observed rewards at each step. That’s why it’s called <em>stochastic gradient ascent</em>.
+
+#### 2.9 contextual bandits
+
+In <strong>contextual (associative) bandits</strong>, the learner must choose actions not just once, but based on the situation (context) they are in, effectively learning a <strong>policy</strong> that maps situations to the best actions. This setting is between simple (k)-armed bandits and full reinforcement learning: each action only affects the immediate reward like in bandits, but actions are chosen differently depending on the observed context.
+
+
+
+
+<h3>3. Finite Markov Decision Processes</h3>
+
+#### 3.1 Agent-environment interface
+
+An <strong>agent–environment interface</strong> in reinforcement learning is described as a cycle: at each time step $t$, the agent observes a state $S_t$, takes an action $A_t$, and then receives a reward $R_{t+1}$ and a new state $S_{t+1}$. The environment’s dynamics are defined by a probability function
+$$p (s',r \mid s,a ) = \Pr \{S_{t+1}=s', R_{t+1}=r \mid S_t=s, A_t=a\} ,$$
+<p>which gives the distribution of next states and rewards, and from which we can also compute state–transition probabilities and expected rewards.</p>
+
+
+<h3>3.2 Goals and Rewards</h3>
+
+<p>In reinforcement learning, the agent’s goal is to maximize the <strong>cumulative reward</strong> over time:</p>
+$$\max ; \mathbb{E}!\left[\sum_t R_t\right].$$
+Rewards define <strong>what</strong> the agent should achieve, not <strong>how</strong> to achieve it, so the design of the reward signal must reflect the true goals we want the agent to pursue.
+
+#### 3.3 Returns and Episodes
+
+The <strong>return</strong> is the sum of future rewards,
+$$G_t = R_{t+1} + R_{t+2} + \dots + R_T,$$
+<p>for episodic tasks with a final time step (T). For continuing tasks, we use the <strong>discounted return</strong></p>
+$$G_t = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}, \quad 0 \le \gamma \le 1,$$
+which weights near-term rewards more if $\gamma$ is small and far-term rewards more if $\gamma$ is close to 1, making the agent more farsighted.
+
+
+#### 3.4 United notion for episodic and continuing tasks
+
+Episodic tasks end after a finite sequence of steps, while continuing tasks go on indefinitely, but both can be written with the same <strong>return formula</strong>:
+$$G_t = \sum_{k=0}^{T} \gamma^k R_{t+k+1},$$
+<p>where (T) may be finite (episodic) or infinite (continuing). By treating episode termination as entering a special absorbing state with zero reward, we get a unified notation that works for both cases.</p>
+
+
+#### 3.5 Polices and value function
+
+<p>A <strong>policy</strong> $\pi(a|s)$ is the agent’s rule for choosing action $a$ in state $s$.</p>
+<p>The <strong>state-value function</strong> under policy $\pi$ is</p>
+$$v_\pi(s) = \mathbb{E}_\pi[G_t \mid S_t=s],$$
+the expected return starting from $s$ and following $\pi$.
+The <strong>action-value function</strong> is
+$$q_\pi(s,a) = \mathbb{E}_\pi[G_t \mid S_t=s, A_t=a],$$
+<p>the expected return starting from $s$, taking action $a$, and then following $\pi$.</p>
+<p>These functions capture how good states or state–action pairs are under a policy, and they are the foundation for reinforcement learning methods.</p>
+
+
+<p>Some Exercises</p>
+
+#### <strong>Exercise 3.15</strong>
+
+<em>In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or only the intervals between them? Prove, using (3.8), that adding a constant (c) to all the rewards adds a constant, (v_c), to the values of all states, and thus does not affect the relative values of any states under any policies. What is (v_c) in terms of (c) and (\gamma)?</em>
+
+<strong>Answer:</strong> Adding a constant (c) to all rewards shifts all state values by
+$$v'*\pi(s)= v*\pi(s)+\frac{c}{1-\gamma}.$$
+So only differences matter; relative ordering is unchanged.
+
+
+
+#### <strong>Exercise 3.16</strong>
+
+<em>Now consider adding a constant (c) to all the rewards in an episodic task, such as maze running. Would this have any effect, or would it leave the task unchanged as in the continuing task above? Why or why not? Give an example.</em>
+
+<strong>Answer:</strong> In episodic tasks, adding $c$ changes the return by $c\times$ $episode length$. If policies differ in how long episodes last, this can change which policy is optimal (e.g., maze task with per-step penalty).
+
+
+
+#### <strong>Exercise 3.17</strong>
+
+<em>What is the Bellman equation for action values, that is, for (q_\pi)? It must give the action value (q_\pi(s,a)) in terms of the action values (q_\pi(s',a')) of possible successors to the state–action pair ((s,a)). Show the sequence of equations analogous to (3.14), but for action values.</em>
+
+<strong>Answer:</strong>
+$$q_\pi(s,a)=\mathbb{E}[R_{t+1}+\gamma v_\pi(S_{t+1}) \mid S_t=s,A_t=a]
+=\sum_{s',r} p(s',r \mid s,a)\left[r+\gamma \sum_{a'} \pi(a'|s')q_\pi(s',a')\right].$$
+#### <strong>Exercise 3.18</strong>
+
+<em>The value of a state depends on the values of the actions possible in that state and on how likely each action is to be taken under the current policy. Give the equation corresponding to this intuition and diagram for the value at the root node (v_\pi(s)), in terms of the value at the expected leaf node, (q_\pi(s,a)), given (S_t=s).</em>
+
+<strong>Answer:</strong>
+$$v_\pi(s) = \sum_a \pi(a|s) q_\pi(s,a).$$
+Expanded with dynamics:
+$$v_\pi(s) = \sum_a \pi(a|s)\sum_{s',r} p(s',r\mid s,a)\left[r+\gamma v_\pi(s')\right].$$
+#### <strong>Exercise 3.19</strong>
+
+<em>The value of an action, (q_\pi(s,a)), depends on the expected next reward and the expected sum of the remaining rewards. Give the equation corresponding to this intuition and diagram for the action value, (q_\pi(s,a)), in terms of the expected next reward, (R_{t+1}), and the expected next state value, (v_\pi(S_{t+1})), given (S_t=s, A_t=a).</em>
+
+<strong>Answer:</strong>
+$$q_\pi(s,a)=\mathbb{E}[R_{t+1}+\gamma v_\pi(S_{t+1})\mid S_t=s,A_t=a].$$
+Expanded:
+$$q_\pi(s,a) = \sum_{s',r} p(s',r\mid s,a)\left[r+\gamma v_\pi(s')\right]
+=\sum_{s',r} p(s',r\mid s,a)\left[r+\gamma \sum_{a'}\pi(a'|s')q_\pi(s',a')\right].$$
+#### 3.6 Optimal value function
+
+<p>This page introduces the <strong>Bellman optimality equations</strong>, which define the value functions for an <em>optimal policy</em>.</p>
+
+<p>* For the <strong>state-value function</strong>:</p>
+$$  v_*(s) = \max_a q_*(s,a)
+  = \max_a \mathbb{E}[R_{t+1} + \gamma v_*(S_{t+1}) \mid S_t=s, A_t=a]
+  = \max_a \sum_{s',r} p(s',r|s,a),[r+\gamma v_*(s')].$$
+<p>* For the <strong>action-value function</strong>:</p>
+$$  q_*(s,a) = \mathbb{E}[R_{t+1} + \gamma \max_{a'} q_*(S_{t+1},a') \mid S_t=s,A_t=a]
+  = \sum_{s',r} p(s',r|s,a),[r+\gamma \max_{a'} q_*(s',a')].$$
+#### 3.7 Optimality and approximation
+
+<p>In practice, agents cannot compute exact optimal policies because solving the Bellman optimality equations for large or complex tasks is too costly in time and memory. Instead, reinforcement learning uses approximations—tabular methods for small state spaces, or parameterized functions for large ones—focusing learning on frequently visited states so that even approximate policies can perform very well.</p>
+
+
+<h3>5.  Monte carlo methods</h3>
+
+#### 5.1 Monte carlo prediction
+
+<p>Monte Carlo (MC) prediction estimates the value of a state $ v_\pi(s) $ by averaging the returns observed after visiting that state under policy $ \pi $. There are two versions: <strong>first-visit MC</strong>, which averages returns only from the first time a state is seen in each episode, and <strong>every-visit MC</strong>, which averages all visits; both converge to $ v_\pi(s) $ as the number of visits grows.</p>
+
+
+####  5.2 Monte carlo estimation on action values
+
+<p>Monte Carlo control improves a policy by alternating between <strong>evaluating</strong> ( q_\pi(s,a) ) from sampled episodes and <strong>improving</strong> it with $ \pi(s) = \arg\max_a q_\pi(s,a) $. Repeating this process (GPI) makes both $ \pi $ and $ q $ converge toward the optimal policy and value function.</p>
+
+
+#### 5.3 Monte carlo control
+
+<p>Monte Carlo control improves a policy by alternating between <strong>evaluating</strong> $ q_\pi(s,a) $ from sampled episodes and <strong>improving</strong> it with $ \pi(s) = \arg\max_a q_\pi(s,a) $. Repeating this process (GPI) makes both $ \pi $ and $ q $ converge toward the optimal policy and value function.</p>
+
+
+#### 5.4 Monte carlo without exploring starts
+
+<p>Monte Carlo control without exploring starts avoids the unrealistic assumption that every state–action pair can be started from. Instead, it uses <strong>ε-greedy policies</strong> (choose best action with prob. $1-\varepsilon$, random otherwise), which guarantees that all actions are explored and allows $q_\pi(s,a)$ to converge to the optimal solution.</p>
+
+
+#### 5.5 Off-policy prediction via importance sampling
+
+<p>Importance sampling lets us use data from a behavior policy (b) to estimate values for a target policy $\pi$.</p>
+<p>We reweight each return (G_t) with the importance-sampling ratio:</p>
+$$\rho_{t:T-1} = \prod_{k=t}^{T-1} \frac{\pi(A_k|S_k)}{b(A_k|S_k)}$$
+so the corrected estimate becomes
+$$V(s) \approx \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T-1} G_t}{\sum_{t \in \mathcal{T}(s)} \rho_{t:T-1}}.$$
+<p>This ensures $E_b[\rho_{t:T-1} G_t | S_t=s] = v_\pi(s)$, giving an unbiased estimate of the target policy’s value.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <footer>
+            <hr>
+            <p><em>Notes by Siyang Liu - Last updated: October 10, 2025</em></p>
+            <p><strong>Author:</strong> <a href="https://lsy641.github.io/">Siyang Liu</a> | <strong>Google Scholar:</strong> <a href="https://scholar.google.com/citations?user=2OjUAPUAAAAJ" rel="noopener" target="_blank">Profile</a></p>
+        </footer>
+    </article>
+</body>
+</html>
