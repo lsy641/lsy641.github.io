@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
 
+# Disallow specific pages from being indexed
+Disallow: /rag_cancer_industry.html
+Disallow: /RAG_Cancer_ACL2026_Industry.pdf
+
 # Sitemap location
 Sitemap: https://lsy641.github.io/sitemap.xml
 

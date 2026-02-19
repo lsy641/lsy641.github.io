@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    
+    <!-- Prevent Search Engine Indexing -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    
+    <title>RAG Cancer ACL2026 Industry Paper</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/modern.css?v=1.3" />
+    
+    <style>
+        .pdf-container {
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .pdf-viewer {
+            display: block;
+            width: 100%;
+            border: none;
+        }
+        
+        .pdf-error {
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .pdf-error h3 {
+            margin-bottom: 20px;
+        }
+        
+        .pdf-error .button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header (included) -->
+    <!-- <div data-include-header></div> -->
+
+    <!-- Main Content -->
+    <main id="content">
+        <div class="container">
+            <!-- PDF Section -->
+            <!-- <section> -->
+                <!-- <h2>PatientAdvocateLM: A Clinically Grounded Retrieval-Augmented Conversational Agent for Medical Visit Preparation</h2> -->
+                <!-- PDF Viewer -->
+                <!-- <div class="pdf-container"> -->
+                <iframe 
+                    src="RAG_Cancer_ACL2026_Industry.pdf#toolbar=1&navpanes=0&scrollbar=1" 
+                    width="100%" 
+                    height="800px" 
+                    frameborder="0"
+                    title="RAG Cancer ACL2026 Industry Paper PDF"
+                    class="pdf-viewer">
+                </iframe>
+                <!-- </div> -->
+            <!-- </section> -->
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/include-header.js"></script>
+    <script>
+        // PDF viewer enhancement
+        document.addEventListener('DOMContentLoaded', function() {
+            const pdfViewer = document.querySelector('.pdf-viewer');
+            
+            // Add loading state
+            pdfViewer.addEventListener('load', function() {
+                console.log('PDF loaded successfully');
+            });
+            
+            // Add error handling
+            pdfViewer.addEventListener('error', function() {
+                console.log('PDF failed to load');
+                // Show alternative message
+                const container = document.querySelector('.pdf-container');
+                container.innerHTML = `
+                    <div class="pdf-error">
+                        <h3>PDF Viewer Unavailable</h3>
+                        <p>The PDF viewer is not available in your browser. Please use the download link below to view the paper.</p>
+                        <a href="RAG_Cancer_ACL2026_Industry.pdf" class="button button-large" download>
+                            📥 Download Paper (PDF)
+                        </a>
+                    </div>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>
